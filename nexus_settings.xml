@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<settings>
+  <mirrors>
+    <mirror>
+      <id>Nexus</id>
+      <name>Nexus Public Mirror</name>
+      <url>http://nexus-nexus.apps.ocp4-cluster-001.int.dhdigital.co.in</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+  </mirrors>
+  <servers>
+    <server>
+      <id>nexus</id>
+      <username>ajay</username>
+      <password>ajay</password>
+    </server>
+  </servers>
+</settings>
