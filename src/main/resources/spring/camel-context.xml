@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       https://camel.apache.org/schema/spring/camel-spring.xsd">
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+        <dataFormats>
+            <xmljson id="xmljson"/>
+            <json id="convertRequest" library="Jackson"
+                objectMapper="com.camel.CustomObjectMapper" unmarshalTypeName="org.mycompany.models.Request"/>
+            <json id="convertResponce" library="Jackson"
+                objectMapper="com.camel.CustomObjectMapper" unmarshalTypeName="org.mycompany.models.Responce"/>
+        </dataFormats>
+        <restConfiguration bindingMode="json" component="jetty"
+            host="0.0.0.0" port="8080"/>
+        <rest id="rest" path="/ft">
+            <post id="rest-id" outType="org.mycompany.models.Responce"
+                type="org.mycompany.models.Request" uri="/transfer">
+                <to uri="direct:listnerEndpoint"/>
+            </post>
+        </rest>
+        <route id="listnerEndpoints">
+            <from id="_from1" uri="direct:listnerEndpoint"/>
+            <marshal id="_marshal1" ref="convertRequest"/>
+            <to id="_to1" uri="http://192.168.50.15/ncb-mock-services/funds/transfer?bridgeEndpoint=true"/>
+            <unmarshal id="_unmarshaller" ref="convertResponce"/>
+            <setBody id="_setBody">
+                <simple>${body[0]}</simple>
+            </setBody>
+            <setHeader headerName="Content-Type" id="_setHeader1">
+                <constant>application/json</constant>
+            </setHeader>
+        </route>
+    </camelContext>
+</beans>
