@@ -11,8 +11,8 @@
   <servers>
     <server>
       <id>nexus</id>
-      <username>ajay</username>
-      <password>ajay</password>
+      <username>admin</username>
+      <password>admin</password>
     </server>
   </servers>
 </settings>
