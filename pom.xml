@@ -4,7 +4,8 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.mycompany</groupId>
   <artifactId>camel-ose-springboot-xml</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1</version>
+  <name>fabric8 :: Quickstarts :: Spring-Boot :: Camel XML</name>
   <description>Spring Boot example running a Camel route defined in XML</description>
   <properties>
     <fuse.version>7.7.0.fuse-sb2-770010-redhat-00001</fuse.version>
