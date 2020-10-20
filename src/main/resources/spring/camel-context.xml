@@ -16,6 +16,9 @@
                 type="org.mycompany.models.Request" uri="/transfer">
                 <to uri="direct:listnerEndpoint"/>
             </post>
+            <get id="rest-id2" uri="/test">
+                <to uri="direct:listnerEndpointAuth"/>
+            </get>
         </rest>
         <route id="listnerEndpoints">
             <from id="_from1" uri="direct:listnerEndpoint"/>
@@ -24,6 +27,17 @@
             <unmarshal id="_unmarshaller" ref="convertResponce"/>
             <setBody id="_setBody">
                 <simple>${body[0]}</simple>
+            </setBody>
+            <setHeader headerName="Content-Type" id="_setHeader1">
+                <constant>application/json</constant>
+            </setHeader>
+        </route>
+        
+        <route id="listnerEndpointsTest">
+            <from id="_from1" uri="direct:listnerEndpointAuth"/>
+			<to uri="mock:testOut"/>
+            <setBody id="_setBody">
+                <simple>OK</simple>
             </setBody>
             <setHeader headerName="Content-Type" id="_setHeader1">
                 <constant>application/json</constant>
