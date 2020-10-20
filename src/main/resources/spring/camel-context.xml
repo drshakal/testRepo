@@ -39,7 +39,7 @@
             <setBody id="_setBody99">
                 <simple>OK</simple>
             </setBody>
-            <setHeader headerName="Content-Type" id="_setHeader1">
+            <setHeader headerName="Content-Type" id="_setHeader19">
                 <constant>application/json</constant>
             </setHeader>
         </route>
