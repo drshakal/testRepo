@@ -34,9 +34,9 @@
         </route>
         
         <route id="listnerEndpointsTest">
-            <from id="_from1" uri="direct:listnerEndpointAuth"/>
+            <from id="_from19" uri="direct:listnerEndpointAuth"/>
 			<to uri="mock:testOut"/>
-            <setBody id="_setBody">
+            <setBody id="_setBody99">
                 <simple>OK</simple>
             </setBody>
             <setHeader headerName="Content-Type" id="_setHeader1">
